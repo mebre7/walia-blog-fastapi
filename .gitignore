@@ -3,6 +3,7 @@ notes.md
 static/
 routers/home_router.py
 templates/
+snippets.txt
 
 # Database
 *.db
