@@ -1,3 +1,6 @@
+frontend/README.md
+frontend/.dockerignore
+frontend/Dockerfile
 .agent/*
 notes.md
 static/
