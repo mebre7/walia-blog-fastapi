@@ -1,3 +1,43 @@
+.agent/*
+notes.md
+static/
+routers/home_router.py
+templates/
+
+# Database
+*.db
+test.db
+
+# Uploaded User Media (keep directory, ignore uploaded photos)
+media/profile_pics/*.jpg
+media/profile_pics/*.png
+media/profile_pics/*.webp
+!media/profile_pics/.gitkeep
+
+# Frontend dependencies & build output
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+## dotenv ##
+.env
+.git/
+.idea/
+# Python-generated files
+.python-version
+uv.lock
+src/
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

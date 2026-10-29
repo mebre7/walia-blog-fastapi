@@ -1,0 +1,25 @@
+[project]
+name = "walia-blog-fastapi"
+version = "0.1.0"
+description = "A blog platform built with FastAPI and PostgreSQL for database"
+readme = "README.md"
+authors = [
+    { name = "mebre7", email = "mebratucheka7@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "fastapi[standard]>=0.162.0",
+    "greenlet>=3.5.6",
+    "pillow>=13.0.0",
+    "pydantic-settings>=2.16.2",
+    "pyjwt>=2.15.1",
+    "sqlalchemy>=2.1.6",
+]
+
+[project.scripts]
+walia-blog-fastapi = "walia_blog_fastapi:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
