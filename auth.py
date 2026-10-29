@@ -6,7 +6,9 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from pwdlib import PasswordHash
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+
+# from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 import models
 from config import settings
@@ -53,7 +55,7 @@ def verify_access_token(token: str) -> str | None:
     else:
         return payload.get("sub")
 
-def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: Annotated[Session, Depends(get_db)]):
+async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: Annotated[AsyncSession, Depends(get_db)]):
     """Get the current logged-in user based on the access token."""
     user_id = verify_access_token(token)
     if user_id is None:
@@ -72,7 +74,7 @@ def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: Annotate
             headers={"WWW-Authenticate": "Bearer"},
         )
     # Get the user from the database using the user_id from the token
-    result = db.execute(select(models.User).where(models.User.user_id == user_id_int))
+    result = await db.execute(select(models.User).where(models.User.user_id == user_id_int))
     user = result.scalars().first()
     if not user:
         raise HTTPException(
