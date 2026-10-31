@@ -1,3 +1,5 @@
+
+
 frontend/README.md
 frontend/.dockerignore
 frontend/Dockerfile
@@ -28,8 +30,6 @@ frontend/.env
 .git/
 .idea/
 # Python-generated files
-.python-version
-uv.lock
 src/
 __pycache__/
 *.py[oc]

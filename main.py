@@ -22,9 +22,7 @@ I will have an endpoint /admin which works in specific network and where I can h
 # Base.metadata.create_all(bind=engine) # idempotency
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    # Startup code
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    # create_all was idempotent, it will not create tables if they already exist. It doesn't work for migrations. It focuses on 'if not exists' and 'if exists' checks. It doesn't handle schema changes or data migrations.
     yield
     # Shutdown code
     await engine.dispose()
